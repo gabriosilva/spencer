@@ -1,8 +1,7 @@
-import { useContext } from "react";
 import styled from "styled-components";
 import { Navigate } from "react-router-dom";
 
-import LoginForm from "../components/LoginForm";
+import RegisterForm from "../components/RegisterForm";
 import Quote from "../components/Quote";
 
 const Container = styled.div`
@@ -19,7 +18,7 @@ const Container = styled.div`
   transition: 0.32s all;
 `;
 
-const LoginStyled = styled(LoginForm)`
+const RegisterStyled = styled(RegisterForm)`
   @media screen and (max-width: 450px) {
     max-width: 40vh;
     > div {
@@ -37,7 +36,7 @@ const LoginStyled = styled(LoginForm)`
 `;
 
 const QuoteStyled = styled(Quote)`
-  margin-left: 15vh;
+  margin-right: 15vh;
   max-width: 37vh;
   @media screen and (max-width: 1000px) {
     display: none;
@@ -45,23 +44,23 @@ const QuoteStyled = styled(Quote)`
   }
 `;
 
-function Login(props: any) {
+function Register(props: any) {
   const isAuth = false;
   return (
     <>
       {isAuth ? (
-        <Navigate to="/dashboard" />
+        <Navigate to="/home" />
       ) : (
         <Container>
-          <LoginStyled
-            clickHandler={() => console.log(123)}
-            errorMsg={{ message: "" }}
-            loading={false}
-          />
           <QuoteStyled
             title="HELLO, MY DEAR FRIEND :)"
             text="Let's do something. Let's create something, build things."
             textHighlighted=""
+          />
+          <RegisterStyled
+            clickHandler={() => console.log(123)}
+            errorMsg={{ message: "" }}
+            loading={false}
           />
         </Container>
       )}
@@ -69,4 +68,4 @@ function Login(props: any) {
   );
 }
 
-export default Login;
+export default Register;

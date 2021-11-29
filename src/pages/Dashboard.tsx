@@ -1,7 +1,5 @@
 import { useRef } from "react";
 
-import { Link, animateScroll as scroll } from "react-scroll";
-
 import styled from "styled-components";
 import Lottie from "react-lottie";
 import animationData from "../assets/lotties/thinkingCircle.json";
@@ -57,10 +55,8 @@ export default function Dashboard() {
 }
 
 const Container = styled.div`
-  // position: absolute;
   left: 0;
   right: 0;
-  // top: 0;
   height: 100vh;
   width: 100vw;
   bottom: 0;

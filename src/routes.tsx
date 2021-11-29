@@ -4,7 +4,7 @@ import { useTransition, animated } from "react-spring";
 // elements
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-import { fileURLToPath } from "url";
+import Register from "./pages/Register";
 
 // handles authorization based route control
 function PrivateRoute({ children }: any) {
@@ -23,6 +23,7 @@ function MainRoute() {
     <Routes>
       <Route path="/" element={<div>a</div>} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route
         path="/dashboard"
         element={
