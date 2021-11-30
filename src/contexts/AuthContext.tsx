@@ -63,8 +63,8 @@ export function AuthProvider({ children }: IChildren) {
         config.headers = { authorization: `Bearer ${headerToken}` };
         return config;
       },
-      (error) => {
-        return Promise.reject(error);
+      (e) => {
+        return Promise.reject(e);
       }
     );
   }
@@ -127,13 +127,14 @@ export function AuthProvider({ children }: IChildren) {
         setSuccess(false);
         setError({ message: response.message });
       }
+      return registered;
     } catch (e: any) {
       const errorMessage = e || e.message;
       setError(errorMessage);
       setSuccess(false);
+      return registered;
     } finally {
       setLoading(false);
-      return registered;
     }
   }
 
