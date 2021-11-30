@@ -1,9 +1,12 @@
 import { useContext } from "react";
+
 import styled from "styled-components";
 import { Navigate } from "react-router-dom";
 
 import LoginForm from "../components/LoginForm";
 import Quote from "../components/Quote";
+
+import { AuthContext } from "../contexts/AuthContext";
 
 const Container = styled.div`
   background: #ff4c29;
@@ -46,7 +49,7 @@ const QuoteStyled = styled(Quote)`
 `;
 
 function Login(props: any) {
-  const isAuth = false;
+  const { loginUser, isAuth, loading, error } = useContext(AuthContext);
   return (
     <>
       {isAuth ? (
@@ -54,9 +57,9 @@ function Login(props: any) {
       ) : (
         <Container>
           <LoginStyled
-            clickHandler={() => console.log(123)}
-            errorMsg={{ message: "" }}
-            loading={false}
+            clickHandler={loginUser}
+            errorMsg={error}
+            loading={loading}
           />
           <QuoteStyled
             title="HELLO, MY DEAR FRIEND :)"

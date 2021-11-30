@@ -4,6 +4,11 @@ import { Navigate } from "react-router-dom";
 import RegisterForm from "../components/RegisterForm";
 import Quote from "../components/Quote";
 
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext, useState } from "react";
+
+import { IRegister } from "../services/auth";
+
 const Container = styled.div`
   background: #ff4c29;
   overflow: auto;
@@ -45,7 +50,13 @@ const QuoteStyled = styled(Quote)`
 `;
 
 function Register(props: any) {
-  const isAuth = false;
+  const { registerUser, isAuth, loading, error } = useContext(AuthContext);
+  const [success, setSuccess] = useState(false);
+
+  async function registerUserHandler({ username, password, email }: IRegister) {
+    const register = await registerUser({ username, password, email });
+    setSuccess(register);
+  }
   return (
     <>
       {isAuth ? (
@@ -58,10 +69,11 @@ function Register(props: any) {
             textHighlighted=""
           />
           <RegisterStyled
-            clickHandler={() => console.log(123)}
-            errorMsg={{ message: "" }}
-            loading={false}
+            clickHandler={registerUserHandler}
+            errorMsg={error}
+            loading={loading}
           />
+          {success && <Navigate to="/login" />}
         </Container>
       )}
     </>

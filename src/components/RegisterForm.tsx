@@ -63,13 +63,16 @@ const RegisterLink = styled.a`
 function RegisterForm({ clickHandler, errorMsg, loading, className }: Props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const userInput = useRef<HTMLInputElement>(null);
   const passwordInput = useRef<HTMLInputElement>(null);
+  const confirmPasswordInput = useRef<HTMLInputElement>(null);
+  const emailInput = useRef<HTMLInputElement>(null);
 
   //handlers
   const handleKeyDownSubmit = (event: any) => {
     if (event.key === "Enter") {
-      clickHandler(username, password);
+      clickHandler({ username, password, email });
     }
   };
   const handleKeyDownNextFocus = (event: any) => {
@@ -95,9 +98,9 @@ function RegisterForm({ clickHandler, errorMsg, loading, className }: Props) {
           name="emailInput"
           type="email"
           placeholder="EMAIL"
-          setEvent={setUsername}
+          setEvent={setEmail}
           onKeyDownEvent={handleKeyDownNextFocus}
-          refItem={userInput}
+          refItem={emailInput}
         />
         <InputPassBoxStyled
           name="passwordInput"
@@ -113,14 +116,14 @@ function RegisterForm({ clickHandler, errorMsg, loading, className }: Props) {
           placeholder="CONFIRM PASSWORD"
           setEvent={setPassword}
           onKeyDownEvent={handleKeyDownSubmit}
-          refItem={passwordInput}
+          refItem={confirmPasswordInput}
         />
       </div>
       <div>
         <ButtonStyled
           text="Register"
           onclick={() => {
-            clickHandler(username, password);
+            clickHandler({ username, email, password });
           }}
           enabled
         />
