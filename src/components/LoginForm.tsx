@@ -104,7 +104,7 @@ function LoginForm({ clickHandler, errorMsg, loading, className }: Props) {
         <ButtonStyled
           text="LOGIN"
           onclick={() => {
-            clickHandler(username, password);
+            clickHandler({username, password});
           }}
           enabled
         />
