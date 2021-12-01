@@ -1,6 +1,7 @@
 # Getting Started with Spencer
 > this project is in development
 
+![image](https://user-images.githubusercontent.com/20153552/144158558-c8a8fbb2-f037-4c6b-82a4-3957dff30928.png)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
