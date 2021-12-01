@@ -6,7 +6,9 @@ import animationData from "../assets/lotties/thinkingCircle.json";
 
 // components
 import SearchBox from "../components/SearchBox";
-import { JsxAttribute } from "typescript";
+
+// screens
+import LoadingScreen from "../screens/LoadingScreen";
 
 export default function Dashboard() {
   const defaultBlock = useRef<any>();
@@ -33,23 +35,35 @@ export default function Dashboard() {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const loading = false;
   return (
     <ContainerWrapper>
-      <Container ref={defaultBlock}>
-        <Lottie options={defaultOptions} height={600} width={600} />
-        <PaddingBlock>
-          <SearchBoxStyled
-            name="search-item"
-            placeholder=""
-            setEvent={(e) => console.log(e)}
-            onKeyDownEvent={onKeyDownHandler}
-            refItem={searchInput}
-          />
-        </PaddingBlock>
-      </Container>
-      <DisplacedContainer ref={viewBlock} onClick={(e) => scrollToMainBlock()}>
-        new content here!
-      </DisplacedContainer>
+      {loading ? (
+        <Container>
+          <LoadingScreen />
+        </Container>
+      ) : (
+        <>
+          <Container ref={defaultBlock}>
+            <Lottie options={defaultOptions} height={600} width={600} />
+            <PaddingBlock>
+              <SearchBoxStyled
+                name="search-item"
+                placeholder=""
+                setEvent={(e) => console.log(e)}
+                onKeyDownEvent={onKeyDownHandler}
+                refItem={searchInput}
+              />
+            </PaddingBlock>
+          </Container>
+          <DisplacedContainer
+            ref={viewBlock}
+            onClick={(e) => scrollToMainBlock()}
+          >
+            new content here!
+          </DisplacedContainer>
+        </>
+      )}
     </ContainerWrapper>
   );
 }
