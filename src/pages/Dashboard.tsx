@@ -9,6 +9,21 @@ import SearchBox from "../components/SearchBox";
 
 // screens
 import LoadingScreen from "../screens/LoadingScreen";
+import NoteScreen from "../screens/NotesScreen";
+import Header from "../components/Header";
+
+const notes = [
+  { id: "1", title: "test", date: "01/10/10" },
+  { id: "2", title: "test2", date: "02/10/10" },
+  { id: "1", title: "test", date: "01/10/10" },
+  { id: "2", title: "test2", date: "02/10/10" },
+  { id: "1", title: "test", date: "01/10/10" },
+  { id: "2", title: "test2", date: "02/10/10" },
+  { id: "1", title: "test", date: "01/10/10" },
+  { id: "2", title: "test2", date: "02/10/10" },
+  { id: "1", title: "test", date: "01/10/10" },
+  { id: "2", title: "test2", date: "02/10/10" },
+];
 
 export default function Dashboard() {
   const defaultBlock = useRef<any>();
@@ -58,9 +73,13 @@ export default function Dashboard() {
           </Container>
           <DisplacedContainer
             ref={viewBlock}
-            onClick={(e) => scrollToMainBlock()}
+            // onClick={(e) => scrollToMainBlock()}
           >
-            new content here!
+            <Header
+              pageTitle="Notes"
+              iconClickHandler={() => scrollToMainBlock()}
+            />
+            <NoteScreen notes={notes} />
           </DisplacedContainer>
         </>
       )}
@@ -88,7 +107,7 @@ const DisplacedContainer = styled.div`
   height: 100vh;
   background: #ff4c29;
   display: flex;
-  irection: column;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: 0.32s all;
