@@ -18,7 +18,7 @@ function PrivateRoute({ children }: any) {
 function MainRoute() {
   return (
     <Routes>
-      <Route path="/" element={<div>a</div>} />
+      <Route path="/" element={<Dashboard />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route
